@@ -10,6 +10,11 @@ html,body{
 
 body{
     margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 100%;
 }
 
 .banner{
@@ -30,17 +35,19 @@ body{
     justify-content: space-between;
 }
 .headIn img{
-    width: 150px;
+    width: 100%;
     cursor: pointer;
     height: auto;
     border-radius: 10%;
 }
 .headIn h1{
+    padding: auto;
     color: beige;
     font-size: 28px;
     cursor:pointer;
 }
 .headIn p{
+    padding: auto;
     color: beige;
     font-size: 18px;
     cursor: pointer;
@@ -126,10 +133,12 @@ body{
     color: beige;
 }
 .content h1{
-    font-size: 60px;
+    padding: 0 1;
+    font-size: auto;
     margin-top: 80px;
 }
 .content p{
+    padding: 15px 0;
     margin: 20px auto;
     font-size: 20px;
     font-weight: 100;
