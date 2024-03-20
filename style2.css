@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/*banner styles*/
+.banner{
+    width: 100%;
+    background-color: darkgrey;
+    background-size: cover;
+    background-position: center;
+}
+.banner img{
+    width: 250px;
+    padding: 10px;
+    margin: auto 0;
+    cursor: pointer;
+    height: auto;
+    border-radius: 20%;
+   /* text-align: center; */
+}
+.banner h1{
+    padding: 10px;
+    font-size: 30px;
+    color: beige;
+}
+.banner p{
+    padding: 10px;
+    line-height: 20px;
+    font-size: 20px;
+    color: beige;
+}
+
+/* button styles */
+.dropbtn{
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 18px;
+  height: 52px;
+  justify-content: center;
+  line-height: .5;
+  margin: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.dropbtn:hover {
+  box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
+  opacity: .85;
+}
+
+.dropbtn:active {
+  outline: 0;
+}
+
+.dropbtn:focus {
+  box-shadow: rgba(0, 0, 0, .5) 0 0 0 3px;
+}
+
+.dropdown a{
+    display: block;
+    color: beige;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 100px;
+    box-shadow: 2px 2px 5px black;
+}
+
+@media (max-width: 420px) {
+  .dropbtn {
+    height: 48px;
+  }
+}
+
+/*Styles phone screen width*/
+@media only screen and (min-width: 768px){
+    .banner{
+        width: 100%;
+        background-color: darkgrey;
+        background-size: cover;
+        background-position: center;
+        min-height: 320px;
+    }
+    
+    .banner img{
+        margin-left: 15%;
+        margin-top: 3%;
+        float: left;
+        text-align: center;
+    }
+    .banner h1{
+        color: beige;
+        padding-top: 5%;
+    }
+    .banner p{
+        font-size: 20px;
+        color: beige;
+    }
+}
+/*Styles for tablet*/
+@media only screen and (min-width: 1000px){}

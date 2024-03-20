@@ -1,0 +1,62 @@
+<html lang="en-us" dir="ltr" class=""><head>
+    <meta charset="UTF=8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le'Shawn Sears - Resume</title>
+    <link rel="stylesheet" href="style.css">
+<style id="__web-inspector-hide-shortcut-style__">
+.__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *, .__web-inspector-hidebefore-shortcut__::before, .__web-inspector-hideafter-shortcut__::after
+{
+    visibility: hidden !important;
+}
+</style></head>
+<body>
+    
+    <header>
+        <h1>Le'Shawn Sears</h1>
+        <p>Software Engineer</p>
+    </header>
+    
+    <section id="education">
+        <h2>Education</h2>
+        <p>Middle Tennessee State University - Computer Science, 2023</p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <p>Knoxville Utilities Board - IT Technician I, Oct,2023 - Present</p>
+        <p>US Army - Infantryman, Aug,2014 - Dec,2017</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <u1>
+            <li>HTML/CSS</li>
+            <li>C++</li>
+            <li>C</li>
+            <li>C#</li>
+            <li>Java</li>
+            <li>Javascript</li>
+            <li>Python</li>
+            <li>Git</li>
+            <li>Linux</li>
+            <li>Assembler</li>
+            <li>NumPy</li>
+            <li>Matplotlib</li>
+            <li>Pandas</li>
+            <li>Neural Nets</li>
+            <li>Unity 2020.3.19f</li>
+            <li>Unreal Engine 5</li>
+            <li>Ruby</li>
+            <li>AWS SQL</li>
+            <li>SQL</li>
+        </u1>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: searsleshawn@gmail.com</p>
+        <p>LinkedIn:<a href="https://www.linkedin.com/in/le-shawn-sears-4b2a57137/" target="_blank" class="">Visit my LinkedIn</a></p>
+        <p>GitHub: <a href="https://github.com/searsleshawn" target="_blank">View my work</a></p> 
+
+
+</section></body></html>
