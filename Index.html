@@ -1,4 +1,5 @@
-<html lang="en-us" dir="ltr" class="">
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,42 +9,82 @@
 <body>
     <div class="banner">
         <div class="dropdown">
-            <button class="dropbtn">—<br>—<br>—</button>
+            <button class="dropbtn">☰</button>
             <div class="dropdown-content">
-                <a href="#projects">Projects</a>
+                <a href="projects.html">Projects</a>
                 <a href="#experience">Experience</a>
                 <a href="#employment">Employment</a>
                 <a href="#education">Education</a>
-                <a href="#about">About Me</a>
+                <a href="#contact">Contact Me</a>
             </div>
         </div>
-        <img src="kub_pic.jpg" alt="Le'Shawn Sears">
+
+        <!-- New container for image and h1 -->
+        <div class="banner-image-container">
+            <img src="kub_pic.jpg" alt="Le'Shawn Sears">
             <h1>Le'Shawn Sears</h1>
-            <p>IT Technician I<br>Knoxville Utilities Board<br>Knoxville, TN 37912</p>
-            <p><br>Phone: (931) 398-0045<br>Email:searsleshawn@gmail.com</p>
+        </div>
+
+        <div class="banner-content">
+            <!-- Optional: Additional content for the banner if needed -->
+        </div>
     </div>
 
     <div class="container" id="education">
-        <h2 style="padding: 3px;">Education</h2>
-        <p style="margin-left: 20px;">BS in Computer Science — Middle Tennesse State University, May, 2023<br>MS in Computer Science — Vanderbilt University, Aug., 2024 - projected graduation Dec., 2025
-        </p>
+        <h2>Education</h2>
+        <ul>
+            <li>
+                <strong>Bachelor of Science in Computer Science</strong><br>
+                Middle Tennessee State University, May 2023
+            </li>
+            <li>
+                <strong>Master of Science in Computer Science</strong><br>
+                Vanderbilt University, August 2024 – projected graduation December 2025
+            </li>
+        </ul>
     </div>
 
     <div class="container" id="experience">
-        <h2 style="padding: 3px;">Experience</h2>
-        <p style="margin-left: 20px;">Le'Shawn Sears earned his Bachelors of Science in Computer Science
-        from Middle Tennessee State University in May of 2023. He currently works at Knoxville Utilities Board
-        aiding with customer's home networks ******* </p>
+        <h2>Experience</h2>
+        
+        <!-- Job 1: US Army -->
+        <div class="job">
+            <h3>US Army – Infantryman</h3>
+            <p><em>August 2014 – December 2017</em></p>
+            <p class="job-description">
+                In this role, I conducted and led training exercises and real-world operational scenarios, demonstrating adaptability across various team levels, from squad to battalion. 
+                My responsibilities required a comprehensive understanding of roles and strategies at each command level to ensure cohesive teamwork and effective achievement of mission objectives.
+            </p>
+        </div>
+    
+        <!-- Job 2: KUB IT Technician -->
+        <div class="job">
+            <h3>KUB – IT Technician</h3>
+            <p><em>October 2023 – May 2024</em></p>
+            <p class="job-description">
+                This role involved providing technical support for customers' home networks and devices, diagnosing and resolving connectivity and performance issues.
+                I also collaborated with the Network Operations Center team to monitor and maintain network stability, ensuring efficient and uninterrupted service for all users.
+            </p>
+        </div>
     </div>
 
-    <div class="container" id="about">
-        <h2 style="padding: 3px;">About</h2>
-        <p style="margin-left: 20px;">Le'Shawn Sears earned his Bachelors of Science in Computer Science
-        from Middle Tennessee State University in May of 2023. He currently works at Knoxville Utilities Board
-        aiding with customer's home networks ******* </p>
+    <!-- Contact Section -->
+    <div class="container" id="contact">
+        <h2>Contact Me</h2>
+        <p>
+            Phone: (931) 398-0045<br>
+            Email: <a href="mailto:searsleshawn@gmail.com">searsleshawn@gmail.com</a><br>
+            LinkedIn: <a href="https://www.linkedin.com/in/le-shawn-sears-4b2a57137/" target="_blank">Le'Shawn Sears | LinkedIn</a>
+        </p>
+    </div>
+    
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" onclick="scrollToTop()">
+        &#8679; <!-- Unicode arrow up symbol -->
     </div>
 
-    
-    
-
+    <!-- JavaScript at the end of body for better loading performance -->
+    <script src="script.js"></script>
 </body>
+</html>
