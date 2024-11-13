@@ -1,179 +1,171 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-html,body{
-    height: 100%;
-}
-
-body{
-    margin: 0;
-    padding: 0;
-}
-
-.container{
-    width: 100%;
-}
-
+/*banner styles*/
 .banner{
     width: 100%;
-    height: 100vh;
-    /*background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(bgi_1.jpg); <-- this is blurry so for now just use color*/
-    background-color: sandybrown;
+    background-color: darkgrey;
     background-size: cover;
     background-position: center;
-    /*-ms-interpolation-mode: nearest-neighbor;*/
+    min-height: 320px;
 }
-.navbar{
-    width: 85%;
-    margin:auto;
-    padding: 35px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.headIn img{
-    width: 100%;
+.banner img{
+    width: 250px;
+    padding: 10px;
+    margin: auto 0;
     cursor: pointer;
     height: auto;
-    border-radius: 10%;
+    border-radius: 20%;
+   /* text-align: center; */
 }
-.headIn h1{
-    padding: auto;
-    color: beige;
-    font-size: 28px;
-    cursor:pointer;
-}
-.headIn p{
-    padding: auto;
-    color: beige;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-/*Styles for list items*/
-.navbar ul li{
-    list-style: none;
-    display: inline-block;
-    margin: 0 20px;
-    position: relative;
-}
-.navbar ul li a{
-    text-decoration: none;
-    color: beige;
-    text-transform: uppercase;
-}
-/*Styles for underline effect*/
-.navbar ul li::after{
-    content: '';
-    height: 3px;
-    width: 0;
-    background: #6495ed;
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    transition: 0.3s;
-
-}
-.navbar ul li:hover::after{
-    width: 100%;
-}
-
-/*Styles for dropdown*/
-.dropdown{
-    position: relative;
-}
-.dropdown-content{
-    opacity: 0;
-    height: 0;
-    top: calc(100% + .25rem);
-    overflow: hidden;
-    position: absolute;
-    background-color: #6495ed;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: .15rem;
-    padding: 3px;
-    z-index: 1;
-    max-height: 0;
-    transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
-}
-.navbar ul li a{
+.banner h1{
+    padding: 10px;
+    font-size: 30px;
     color: beige;
 }
-.dropdown:hover .dropdown-content{
-    display: block;
-    max-height: 500px;
-    opacity: 1;
-}
-.dropdown-content p{
-    color: beige;
-    font-size: 14px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 5px;
-}
-.dropux{
-    color: transparent;
-    transition: color 0.7s ease-in-out;
-}
-.navbar ul li:hover .dropux{
-    color: beige;
-}
-
-/*styles for center welcome text of site*/
-.content{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: beige;
-}
-.content h1{
-    padding: 0 1;
-    font-size: auto;
-    margin-top: 80px;
-}
-.content p{
-    padding: 15px 0;
-    margin: 20px auto;
+.banner p{
+    padding: 10px;
+    line-height: 20px;
     font-size: 20px;
-    font-weight: 100;
-    line-height: 25px;
+    color: beige;
 }
 
-/*styles for buttons*/
-button{
-    width: 200px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid #6495ed;
-    background: transparent;
-    color: beige;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+/* button styles */
+.dropbtn{
+  align-items: center;
+  background-color: initial;
+  background-image: linear-gradient(#464d55, #25292e);
+  border-radius: 8px;
+  border-width: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .1),0 3px 6px rgba(0, 0, 0, .05);
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 18px;
+  height: 52px;
+  justify-content: center;
+  line-height: .5;
+  margin: 0;
+  outline: none;
+  overflow: hidden;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 150ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
-span{
-    background: #6495ed;
-    height: 100%;
-    width: 0;
-    border-radius: 25px;
+
+.dropdown {
+    position: fixed;
+    right: 60px; /* Adjust distance from the right edge */
+    top: 20px;   /* Adjust distance from the top edge */
+    z-index: 10;     /* Ensures it stays above other elements */
+}
+
+
+.dropbtn:hover {
+  box-shadow: rgba(0, 1, 0, .2) 0 2px 8px;
+  opacity: .85;
+}
+
+.dropbtn:active {
+  outline: 0;
+}
+
+.dropbtn:focus {
+  box-shadow: rgba(0, 0, 0, .5) 0 0 0 3px;
+}
+
+.dropdown a{
+    display: block;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+/* Dropdown content styling to match the button */
+.dropdown-content {
+    display: none; /* Hidden by default */
     position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: 0.3s;
+    background-image: linear-gradient(#464d55, #25292e);
+    min-width: 100px;
+    padding: 5px 0; /* Space between items */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .1), 0 3px 6px rgba(0, 0, 0, .05);
+    border-radius: 8px;
+    z-index: 1;
 }
-button:hover span{
-    width: 100%;
+
+/* Style for dropdown items */
+.dropdown-content a {
+    display: block;
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
 }
-button:hover{
-    border: none;
+
+/* Hover effect for dropdown items */
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+    color: #fff;
 }
+
+
+/* Show dropdown content when .dropdown has focus */
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+/* Optional: style to make button retain focus on click */
+.dropbtn {
+    outline: none; /* Remove outline for button focus */
+}
+
+
+
+@media (max-width: 420px) {
+  .dropbtn {
+    height: 48px;
+  }
+}
+
+/*Styles phone screen width*/
+@media only screen and (min-width: 768px){
+    .banner{
+        width: 100%;
+        background-color: darkgrey;
+        background-size: cover;
+        background-position: center;
+        min-height: 320px;
+    }
+    
+    .banner img{
+        margin-left: 15%;
+        margin-top: 3%;
+        float: left;
+        text-align: center;
+    }
+    .banner h1{
+        color: beige;
+        padding-top: 5%;
+    }
+    .banner p{
+        font-size: 20px;
+        color: beige;
+    }
+}
+/*Styles for tablet*/
+@media only screen and (min-width: 1000px){}

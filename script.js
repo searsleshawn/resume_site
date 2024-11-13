@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var dropdowns = document.querySelectorAll('.dropdown');
+    const dropbtn = document.querySelector('.dropbtn');
+    const dropdownContent = document.querySelector('.dropdown-content');
 
-    dropdowns.forEach(function(dropdown) {
-        var content = dropdown.querySelector('.dropdown-content');
+    // Toggle visibility on click
+    dropbtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // Log to see if the click event fires
+        console.log("Button clicked");
 
-        dropdown.addEventListener('mouseover', function() {
-            content.style.height = content.scrollHeight + 'px';
-        });
-
-        dropdown.addEventListener('mouseout', function() {
-            content.style.height = 0;
-        });
-
-        // Add an event listener to adjust the height when the window is resized
-        window.addEventListener('resize', function() {
-            content.style.height = content.scrollHeight + 'px';
-        });
+        // Directly toggle display property for testing
+        if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+        } else {
+            dropdownContent.style.display = 'block';
+            console.log("Dropdown content visible");
+        }
     });
 });
