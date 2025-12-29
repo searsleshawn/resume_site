@@ -7,6 +7,7 @@ on the projects page.
 Old link:
 https://searsleshawn.github.io/resume_site/
 
-# Updated to be moved to - https://leshawn.searsconsulting.org/ hosted on my home server using Cloudflare.
+# Updated 
+Moved to - https://leshawn.searsconsulting.org/ hosted on my home server using Cloudflare.
 
 Will be updating project's structure as SPA for better flexibility
