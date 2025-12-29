@@ -3,3 +3,7 @@ Resume made using html/css and javascript
 
 Website is custom-made and will support other custom-made projects 
 on the projects page.
+
+Updated to be moved to - https://leshawn.searsconsulting.org/ hosted on my home server using Cloudflare.
+
+Will be updating project's structure as SPA for better flexibility
