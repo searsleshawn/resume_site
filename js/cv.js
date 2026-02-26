@@ -15,7 +15,7 @@ const cvData = {
       degree: "Master of Science in Computer Science",
       institution: "Vanderbilt University",
       location: "Nashville, TN",
-      dates: "August 2024 – Expected December 2025"
+      dates: "August 2024 – Expected May 2026"
     },
     {
       degree: "Bachelor of Science in Computer Science",

@@ -5,7 +5,7 @@ const portfolio = {
     name: "Le'Shawn Sears",
     dateEntered: "August 2024",
     status: "Part-time",
-    support: "GI Bill",
+    support: "Scholarship, GI Bill",
     advisor: "Dr. Peng (Dana) Zhang",
   },
   goals: [
@@ -23,9 +23,17 @@ const portfolio = {
     "Full-Stack Systems Engineering",
   ],
   courses: [
-    { course: "CS #### – Course Name", semester: "Fall 2024", instructor: "Instructor", grade: "A / In Progress / Planned" },
-    { course: "CS #### – Course Name", semester: "Fall 2024", instructor: "Instructor", grade: "A / In Progress / Planned" },
-    { course: "CS #### – Course Name", semester: "Fall 2024", instructor: "Instructor", grade: "A / In Progress / Planned" },
+    { course: "CS 5278-50 – Principles of Software Engineering", semester: "Fall 2024", instructor: "Artin Sedighi", grade: "A+" },
+    { course: "CS 5279-50 – Software Engineering Project", semester: "Fall 2024", instructor: "Yu Sun", grade: "A" },
+    { course: "CS 6387-50 – Topics in Software Engineering: Cybersecurity", semester: "Fall 2024", instructor: "Charles Easttom", grade: "A" },
+    { course: "CS 5262-50 – Foundation of Machine Learning", semester: "Spring 2025", instructor: "Peng Zhang", grade: "A+" },
+    { course: "CS 8395-50 – Special Topics: Microservices", semester: "Spring 2025", instructor: "Darren Pulsipher", grade: "A" },
+    { course: "CS 5288-50 – Web-based System Architecture", semester: "Summer 2025", instructor: "Tamas Kecskes", grade: "A" },
+    { course: "CS 5891-50 – Special Topics: Responsible AI", semester: "Summer 2025", instructor: "Artin Sedighi", grade: "A+" },
+    { course: "CS 5287-50 – Principles of Cloud Computing", semester: "Fall 2025", instructor: "Darren Pulsipher", grade: "A" },
+    { course: "CS 6315-50 – Automated Verification", semester: "Fall 2025", instructor: "Artin Sedighi", grade: "A+" },
+    { course: "CS 5260-01 – Artifical Intelligence", semester: "Spring 2026", instructor: "Ronald Hedgecock", grade: "In Progress" },
+    { course: "CS 8395-51 – Special Topics: Digital Forensics", semester: "Spring 2026", instructor: "Charles Easttom", grade: "In Progress" }
   ],
 };
 
