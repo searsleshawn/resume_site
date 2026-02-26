@@ -33,7 +33,7 @@ const portfolio = {
     { course: "CS 5287-50 – Principles of Cloud Computing", semester: "Fall 2025", instructor: "Darren Pulsipher", grade: "A" },
     { course: "CS 6315-50 – Automated Verification", semester: "Fall 2025", instructor: "Artin Sedighi", grade: "A+" },
     { course: "CS 5260-01 – Artifical Intelligence", semester: "Spring 2026", instructor: "Ronald Hedgecock", grade: "In Progress" },
-    { course: "CS 8395-51 – Special Topics: Digital Forensics", semester: "Spring 2026", instructor: "Charles Easttom", grade: "In Progress" }
+    { course: "CS 8395-51 – Special Topics: Digital Forensics", semester: "Spring 2026", instructor: "Charles Easttom", grade: "In Progress" },
   ],
 };
 
