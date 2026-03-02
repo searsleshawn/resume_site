@@ -9,12 +9,12 @@ const portfolio = {
     advisor: "Dr. Peng (Dana) Zhang",
   },
   goals: [
-    "TBD: Write 2–4 sentences about my professional goals."
+    "My long-term goal is to establish a consulting practice dedicated to providing practical, cost-efficient technology solutions to rural and small-business communities. Through ongoing networking with professionals across healthcare, trades, and locally owned enterprises, I have observed a consistent pattern of uncertainty, financial pressure, and hesitation when navigating modern technology services.\n\nRather than replacing enterprise systems, I aim to help organizations optimize existing cloud platforms, reduce unnecessary expenditures, and implement targeted, reliable software solutions that prioritize simplicity and sustainability. Drawing from advanced training in scalable systems architecture, cloud infrastructure, artificial intelligence, cybersecurity, and digital forensics, I seek to bring high-level technical expertise to communities that often lack access to these specialized services.\n\nMy objective is to serve as a trusted technical partner, bridging complex digital infrastructure with the practical needs of small, growing businesses while strengthening long-term digital resilience."
   ],
   achievements: [
-    "TBD: Achievement 1",
-    "TBD: Achievement 2",
-    "TBD: Achievement 3",
+    "Built and evaluated machine learning models using classical and neural network techniques, applying rigorous validation methods and statistical analysis to ensure model reliability and performance.",
+    "Architected and tested a resilient microservices system with domain-driven design principles, exploring scalability trade-offs between monolithic and distributed architectures.",
+    "Integrated cloud infrastructure, cybersecurity principles, automated verification, and digital forensics concepts to develop a comprehensive understanding of secure, production-ready system design."
   ],
   interests: [
     "Distributed Systems & Cloud Infrastructure",
@@ -105,10 +105,14 @@ export function render() {
       ${coursesTable}
 
       <h3>Professional Goals</h3>
-      <ul>${s.goals.map(g => `<li>${escapeHtml(g)}</li>`).join("")}</ul>
+      ${s.goals.map(g => `
+        <p>${escapeHtml(g).replaceAll("\n", "<br>")}</p>
+      `).join("")}
 
-      <h3>Achievements (Academic Year)</h3>
-      <ul>${s.achievements.map(a => `<li>${escapeHtml(a)}</li>`).join("")}</ul>
+      <h3>Academic Achievements (NEEDS MORE DEPTH)</h3>
+      <ul class="achievement-list">
+        ${s.achievements.map(a => `<li>${escapeHtml(a)}</li>`).join("")}
+      </ul>
 
       <h3>Computer Science Topic Interests</h3>
       <ul>${s.interests.map(i => `<li>${escapeHtml(i)}</li>`).join("")}</ul>
