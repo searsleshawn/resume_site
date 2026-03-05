@@ -77,6 +77,10 @@ async function router() {
 
     const html = mod.render();
     app.innerHTML = isPrint ? wrapPrint(html, normalized) : html;
+    /* VIEWER: run page initializer if it exists */
+    if (!isPrint && typeof mod.init === "function") {
+      mod.init();
+    }
     window.scrollTo({ top: 0, behavior: "instant" });
   } catch (err) {
     app.innerHTML = errorPage(normalized, err);

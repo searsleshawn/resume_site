@@ -75,7 +75,7 @@ export function render() {
     <section class="page">
       <h2 class="section-title">2. Curriculum Vitae</h2>
 
-      <h3>Education</h3>
+      <h3>Education ✅</h3>
       ${e.map(ed => `
         <div class="cv-block">
           <strong>${escapeHtml(ed.degree)}</strong><br />
@@ -84,7 +84,7 @@ export function render() {
         </div>
       `).join("")}
 
-      <h3>Professional Employment</h3>
+      <h3>Professional Employment 🚧</h3>
       ${jobs.map(job => `
         <div class="cv-block">
           <strong>${escapeHtml(job.title)}</strong> – ${escapeHtml(job.organization)}<br />
@@ -95,16 +95,17 @@ export function render() {
         </div>
       `).join("")}
 
-      <h3>Technical Skills</h3>
+      <h3>Honors & Service 🚧</h3>
+      <ul>
+        ${cvData.honors.map(h => `<li>${escapeHtml(h)}</li>`).join("")}
+      </ul>
+      
+      <h3>Technical Skills🚧</h3>
       <p><strong>Programming Languages:</strong> ${s.languages.join(", ")}</p>
       <p><strong>Frameworks & Tools:</strong> ${s.frameworks.join(", ")}</p>
       <p><strong>Systems & Infrastructure:</strong> ${s.systems.join(", ")}</p>
       <p><strong>Areas of Focus:</strong> ${s.areas.join(", ")}</p>
 
-      <h3>Honors & Service</h3>
-      <ul>
-        ${cvData.honors.map(h => `<li>${escapeHtml(h)}</li>`).join("")}
-      </ul>
     </section>
   `;
 }

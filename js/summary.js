@@ -11,11 +11,55 @@ const portfolio = {
   goals: [
     "My long-term goal is to establish a consulting practice dedicated to providing practical, cost-efficient technology solutions to rural and small-business communities. Through ongoing networking with professionals across healthcare, trades, and locally owned enterprises, I have observed a consistent pattern of uncertainty, financial pressure, and hesitation when navigating modern technology services.\n\nRather than replacing enterprise systems, I aim to help organizations optimize existing cloud platforms, reduce unnecessary expenditures, and implement targeted, reliable software solutions that prioritize simplicity and sustainability. Drawing from advanced training in scalable systems architecture, cloud infrastructure, artificial intelligence, cybersecurity, and digital forensics, I seek to bring high-level technical expertise to communities that often lack access to these specialized services.\n\nMy objective is to serve as a trusted technical partner, bridging complex digital infrastructure with the practical needs of small, growing businesses while strengthening long-term digital resilience."
   ],
+  // achievements: [
+  //   "Built and evaluated machine learning models using classical and neural network techniques, applying rigorous validation methods and statistical analysis to ensure model reliability and performance.",
+  //   "Architected and tested a resilient microservices system with domain-driven design principles, exploring scalability trade-offs between monolithic and distributed architectures.",
+  //   "Integrated cloud infrastructure, cybersecurity principles, automated verification, and digital forensics concepts to develop a comprehensive understanding of secure, production-ready system design."
+  // ],
   achievements: [
-    "Built and evaluated machine learning models using classical and neural network techniques, applying rigorous validation methods and statistical analysis to ensure model reliability and performance.",
-    "Architected and tested a resilient microservices system with domain-driven design principles, exploring scalability trade-offs between monolithic and distributed architectures.",
-    "Integrated cloud infrastructure, cybersecurity principles, automated verification, and digital forensics concepts to develop a comprehensive understanding of secure, production-ready system design."
-  ],
+  {
+    domain: "Distributed Systems & Backend Engineering",
+    highlights: [
+      "Developed reactive service workflows and data-access pipelines.",
+      "Analyzed architectural trade-offs between monolithic and distributed system design."
+    ]
+  },
+  {
+    domain: "Cloud Infrastructure & DevOps",
+    highlights: [
+      "Applied Infrastructure as Code practices for automated cloud provisioning.",
+      "Designed reproducible deployment workflows and configuration management."
+    ]
+  },
+  {
+    domain: "Machine Learning & Artificial Intelligence",
+    highlights: [
+      "Trained and evaluated machine learning models across classical and neural approaches.",
+      "Applied validation, feature engineering, and interpretability techniques."
+    ]
+  },
+  {
+    domain: "Algorithms & Formal Verification",
+    highlights: [
+      "Implemented algorithmic systems for spatial indexing and efficient query processing.",
+      "Developed lightweight verification tooling for constraint-based reasoning."
+    ]
+  },
+  {
+    domain: "Full-Stack Web Systems",
+    highlights: [
+      "Engineered interactive web applications with authentication and persistent state.",
+      "Implemented RESTful services and server-validated application logic."
+    ]
+  },
+  {
+    domain: "Cybersecurity & Digital Forensics",
+    highlights: [
+      "Performed forensic examination of system artifacts and network activity.",
+      "Produced structured technical reports documenting investigative findings."
+    ]
+  }
+],
   interests: [
     "Distributed Systems & Cloud Infrastructure",
     "Security & Digital Forensics",
@@ -98,23 +142,28 @@ export function render() {
     <section class="page">
       <h2 class="section-title">1. Summary Data</h2>
 
-      <h3>Personal Information</h3>
+      <h3>Personal Information ✅</h3>
       ${infoTable}
 
-      <h3>Courses and Grades</h3>
+      <h3>Courses and Grades ✅</h3>
       ${coursesTable}
 
-      <h3>Professional Goals</h3>
+      <h3>Professional Goals ✅</h3>
       ${s.goals.map(g => `
         <p>${escapeHtml(g).replaceAll("\n", "<br>")}</p>
       `).join("")}
 
-      <h3>Academic Achievements (NEEDS MORE DEPTH)</h3>
-      <ul class="achievement-list">
-        ${s.achievements.map(a => `<li>${escapeHtml(a)}</li>`).join("")}
-      </ul>
+      <h3>Academic Achievements ✅</h3>
+      ${s.achievements.map(a => `
+        <div class="achievement-block">
+          <strong>${escapeHtml(a.domain)}</strong>
+          <ul>
+            ${a.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join("")}
+          </ul>
+        </div>
+      `).join("")}
 
-      <h3>Computer Science Topic Interests</h3>
+      <h3>Computer Science Topic Interests 🚧</h3>
       <ul>${s.interests.map(i => `<li>${escapeHtml(i)}</li>`).join("")}</ul>
     </section>
   `;
