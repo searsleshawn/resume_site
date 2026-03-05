@@ -29,20 +29,6 @@ def main():
     # === Run bounded model checking ===
     sat, model = run_bmc(ts, args.bound, args.target, args.safety, args.verbose)
 
-    # === Print results ===
-    # if sat:
-    #     if args.safety:
-    #         print(f"✅ Safety property holds: '{args.target}' is never reached within bound {args.bound}.")
-    #     else:
-    #         print(f"✅ Target '{args.target}' reachable within bound {args.bound}.")
-    #         print("Trace:", " → ".join(model))
-    # else:
-    #     if args.safety:
-    #         print(f"❌ Safety property violated: '{args.target}' reached within bound {args.bound}.")
-    #         print("Counterexample trace:", " → ".join(model or []))
-    #     else:
-    #         print(f"❌ Target state '{args.target}' is NOT reachable within bound {args.bound}.")
-
     if sat:
         if args.safety:
             print(f"❌ Safety property violated: '{args.target}' reached within bound {args.bound}.")

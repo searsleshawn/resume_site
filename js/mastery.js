@@ -133,11 +133,11 @@ export function render() {
 
       <details open>
         <summary><strong>Bounded Model Checker Report </strong></summary>
-        <p><a href="${escapeHtml(BMC_PDF)}" target="_blank" rel="noreferrer">Open report in a new tab</a></p>
+        <p><a href="${escapeHtml(BMC_PDF)}" target="_blank" rel="noreferrer">Open report in a new tab (recommended if using phone)</a></p>
         <iframe
           src="${escapeHtml(BMC_PDF)}#zoom=page-width"
           title="Bounded Model Checker Report"
-          width="250%"
+          width="775vw"
           height="1000"
           loading="lazy"
           style="border:1px solid rgba(255,255,255,.12); border-radius:10px;">
