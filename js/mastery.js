@@ -14,40 +14,16 @@ function escapeHtml(s) {
 const BMC_BASE = "content/artifacts/bmc";
 const BMC_PDF = `${BMC_BASE}/bmc-report.pdf`;
 
-// --- Viewers (real files, no rewriting) ---
-const codeViewer = renderViewer({
-  id: "bmc-code",
-  title: "Model Source Code",
-  files: [
-    { label: "bmc.py", url: `${BMC_BASE}/bmc.py` },
-    { label: "solver.py", url: `${BMC_BASE}/solver.py` },
-    { label: "model.py", url: `${BMC_BASE}/model.py` },
-    { label: "main.py", url: `${BMC_BASE}/main.py` }
-  ]
-});
-
-const modelViewer = renderViewer({
-  id: "bmc-models",
-  title: "Model Inputs",
-  files: [
-    { label: "cyclicerror.json", url: `${BMC_BASE}/cyclicerror.json` },
-    { label: "deadend.json", url: `${BMC_BASE}/deadend.json` },
-    { label: "deepchain.json", url: `${BMC_BASE}/deepchain.json` },
-    { label: "nondeterministic.json", url: `${BMC_BASE}/nondeterministic.json` },
-    { label: "toggle.json", url: `${BMC_BASE}/toggle.json` },
-    { label: "trafficlight.json", url: `${BMC_BASE}/trafficlight.json` },
-    { label: "unreachable.json", url: `${BMC_BASE}/unreachable.json` },
-  ]
-});
+// --- FSM artifact paths ---
+const FSM_BASE = "content/artifacts/FSM";
 
 const masteryData = {
   intro: [
     "This section demonstrates my knowledge and mastery of computer science concepts through advanced problem solving and substantial contributions to software artifacts."
   ],
 
-  // Artifact A: Bounded Model Checker
   advancedProblemArtifact: {
-    title: "Artifact A: Bounded Model Checker ✅",
+    title: "Bounded Model Checker ✅",
     course: "CS 6315-50 — Automated Verification (Fall 2025)",
     problemStatement: `
       Modern software systems are often modeled as finite-state transition systems where
@@ -72,38 +48,180 @@ const masteryData = {
       "Finite-state system modeling and execution trace analysis.",
       "Constraint solving and satisfiability checking for reachability and safety properties."
     ],
-    evidence: [
-        "Execution traces demonstrating reachable target states and counterexample paths.",
-        "Example transition systems including cyclic error propagation, dead-end states, and deep execution chains.",
-        "Visualization of state-transition graphs and solver results.",
-        "SAT/UNSAT outputs produced by the solver validating reachability and safety queries."
-
+    deliverables: [
+      {
+        id: "bmc-report",
+        title: "Final Report",
+        type: "viewer",
+        open: true,
+        controls: {
+          openInNewTab: true,
+          download: true
+        },
+        files: [
+          { label: "bmc-report.pdf", url: BMC_PDF }
+        ]
+      },
+      {
+        id: "bmc-code",
+        title: "Model Source Code",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: false,
+          copy: true
+        },
+        files: [
+          { label: "bmc.py", url: `${BMC_BASE}/bmc.py` },
+          { label: "solver.py", url: `${BMC_BASE}/solver.py` },
+          { label: "model.py", url: `${BMC_BASE}/model.py` },
+          { label: "main.py", url: `${BMC_BASE}/main.py` }
+        ]
+      },
+      {
+        id: "bmc-models",
+        title: "Model Inputs",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: false,
+          copy: true
+        },
+        files: [
+          { label: "cyclicerror.json", url: `${BMC_BASE}/cyclicerror.json` },
+          { label: "deadend.json", url: `${BMC_BASE}/deadend.json` },
+          { label: "deepchain.json", url: `${BMC_BASE}/deepchain.json` },
+          { label: "nondeterministic.json", url: `${BMC_BASE}/nondeterministic.json` },
+          { label: "toggle.json", url: `${BMC_BASE}/toggle.json` },
+          { label: "trafficlight.json", url: `${BMC_BASE}/trafficlight.json` },
+          { label: "unreachable.json", url: `${BMC_BASE}/unreachable.json` }
+        ]
+      }
     ],
-    links: [
-      // Optional public links later (must be public if used)
-      // { label: "GitHub Repository", url: "https://..." }
-    ]
+    links: []
   },
 
-  // Artifact B: Field Service Management System Design
   softwareArtifact: {
-    title: "Artifact B: Field Service Management System Design 🚧",
-    artifactType: "TBD (Design doc / documentation / code excerpt)",
-    summary: "TBD: 3–6 sentences summarizing the software artifact and why it is significant.",
+    title: "Field Service Management System Design ✅",
+    artifactType: "Systems Engineering Design Documentation",
+
+    summary: "This artifact presents the full systems engineering design for a Field Service Management (FSM) software platform intended to support organizations managing distributed field technicians. The project demonstrates the complete lifecycle of a software system including requirements engineering, architecture design, security planning, testing strategy, and deployment planning. The system focuses on improving operational efficiency through automated scheduling, real-time technician tracking, equipment management, and integration with enterprise systems such as CRM and ERP platforms. The documentation illustrates how complex software systems are designed using structured engineering practices, traceability, and security-focused architecture.",
+
     myContribution: [
-      "TBD: Clear bullet list describing what I built/owned."
+      "Designed the full system architecture and system engineering documentation for a Field Service Management platform.",
+      "Developed requirements specifications and traceability mappings linking stakeholder requirements to system functionality.",
+      "Produced UML and SysML design artifacts including activity diagrams, class diagrams, and component diagrams.",
+      "Designed security architecture including encryption strategies, authentication mechanisms, and secure API communication.",
+      "Developed system testing strategy including unit, integration, system, and user acceptance testing.",
+      "Created integration and deployment plans for enterprise environments including external system integrations."
     ],
+
     engineeringHighlights: [
-      "TBD: architecture, testing, performance, scalability, security, etc."
+      "Full systems engineering lifecycle including requirements, design, testing, and deployment planning.",
+      "Architecture modeling using UML and SysML diagrams.",
+      "Traceability matrix linking requirements to system design and validation.",
+      "Security-first design incorporating encryption, RBAC, secure APIs, and compliance considerations.",
+      "Integration architecture supporting CRM, ERP, and external service APIs.",
+      "Testing strategy including unit testing, integration testing, system testing, and user acceptance testing.",
+      "Deployment planning and operational considerations for enterprise environments."
     ],
-    evidence: [
-      "TBD: code excerpts, design diagrams, test results, screenshots."
+
+    deliverables: [
+      {
+        id: "fsm-security-planning",
+        title: "Security Planning",
+        type: "viewer",
+        open: true,
+        controls: {
+          openInNewTab: true
+        },
+        files: [
+          { label: "Concept of Operations (CONOPS / OPSCON)", url: `${FSM_BASE}/Security Planning/Field Service Management Software - CONOPS_OPSCON.pdf` },
+          { label: "Systems Engineering Management Plan (SEMP)", url: `${FSM_BASE}/Security Planning/Field Service Management Software - SEMP.pdf` },
+        ]
+      },
+      {
+        id: "fsm-engineering-requirements",
+        title: "Engineering Requirements",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: true
+        },
+        files: [
+          { label: "System Requirements Document (SRD)", url: `${FSM_BASE}/Engineering Requirements/System Requirements Document (SRD).pdf` },
+          { label: "FSM - Traceability Matrix", url: `${FSM_BASE}/Engineering Requirements/FSM - Traceability Matrix.xlsx` }
+        ]
+      },
+      {
+        id: "fsm-system-design",
+        title: "System Design",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: true
+        },
+        files: [
+          { label: "System Design Document", url: `${FSM_BASE}/System Design/System Design.pdf` },
+          { label: "Activity Diagram", url: `${FSM_BASE}/System Design/Activity Diagram.png` },
+          { label: "Class Diagram", url: `${FSM_BASE}/System Design/Class Diagram.png` },
+          { label: "Component Diagram", url: `${FSM_BASE}/System Design/Component Diagram.png` },
+          { label: "SysML BDD", url: `${FSM_BASE}/System Design/SysML-BDD.png` },
+          { label: "SysML IBD", url: `${FSM_BASE}/System Design/SysML-IBD.png` },
+          { label: "Use Case Diagram", url: `${FSM_BASE}/System Design/Use Case Diagram.png` }
+        ]
+      },
+      {
+        id: "fsm-testing-strategy",
+        title: "Testing Strategy",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: true
+        },
+        files: [
+          { label: "Testing Plan.pdf", url: `${FSM_BASE}/Testing Plan.pdf` }
+        ]
+      },
+      {
+        id: "fsm-cryptography",
+        title: "Cryptographic Architecture",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: true
+        },
+        files: [
+          { label: "Cryptographic Architecture", url: `${FSM_BASE}/Cryptography.pdf` }
+        ]
+      },
+      {
+        id: "fsm-integration-deployment",
+        title: "Integration and Deployment",
+        type: "viewer",
+        open: false,
+        files: [
+          { label: "Integration and Deployment Plan.pdf", url: `${FSM_BASE}/Integration and Deployment Plan.pdf` }
+        ]
+      }
     ],
-    links: [
-      // Optional public links later
-    ]
+    links: []
   }
 };
+
+function renderDeliverables(items, defaultOpen = false) {
+  return items.map(d => {
+    if (d.type !== "viewer") return "";
+
+    return renderViewer({
+      id: d.id,
+      title: d.title,
+      files: d.files,
+      open: d.open ?? defaultOpen,
+      controls: d.controls || {}
+    });
+  }).join("");
+}
 
 export function render() {
   const a = masteryData.advancedProblemArtifact;
@@ -120,32 +238,17 @@ export function render() {
       <h3>${escapeHtml(a.title)}</h3>
       <p><strong>Course:</strong> ${escapeHtml(a.course)}</p>
 
-      <h4>Problem Statement</h4>
+      <h4>Summary</h4>
       <p>${escapeHtml(a.problemStatement)}</p>
 
-      <h4>What I Did</h4>
+      <h4>My Contribution</h4>
       <ul>${a.whatIDid.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
 
       <h4>Computer Science Concepts Demonstrated</h4>
       <ul>${a.concepts.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
 
-      <h4>Evidence</h4>
-
-      <details open>
-        <summary><strong>Bounded Model Checker Report </strong></summary>
-        <p><a href="${escapeHtml(BMC_PDF)}" target="_blank" rel="noreferrer">Open report in a new tab (recommended if using phone)</a></p>
-        <iframe
-          src="${escapeHtml(BMC_PDF)}#zoom=page-width"
-          title="Bounded Model Checker Report"
-          width="775vw"
-          height="1000"
-          loading="lazy"
-          style="border:1px solid rgba(255,255,255,.12); border-radius:10px;">
-        </iframe>
-      </details>
-
-      ${codeViewer}
-      ${modelViewer}
+      <h4>Deliverables</h4>
+      ${renderDeliverables(a.deliverables, false)}
 
       ${a.links.length ? `
         <h4>Supplemental Public Links</h4>
@@ -168,8 +271,8 @@ export function render() {
       <h4>Engineering Highlights</h4>
       <ul>${b.engineeringHighlights.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
 
-      <h4>Evidence to Include in PDF</h4>
-      <ul>${b.evidence.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+      <h4>Deliverables</h4>
+      ${renderDeliverables(b.deliverables, false)}
 
       ${b.links.length ? `
         <h4>Supplemental Public Links</h4>
