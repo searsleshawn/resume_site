@@ -1,5 +1,5 @@
 // js/mastery.js
-import { renderViewer, initViewer } from "./viewer.js";
+import { renderViewer, initViewer, renderDeliverables } from "./viewer.js";
 
 function escapeHtml(s) {
   return String(s)
@@ -209,19 +209,6 @@ const masteryData = {
   }
 };
 
-function renderDeliverables(items, defaultOpen = false) {
-  return items.map(d => {
-    if (d.type !== "viewer") return "";
-
-    return renderViewer({
-      id: d.id,
-      title: d.title,
-      files: d.files,
-      open: d.open ?? defaultOpen,
-      controls: d.controls || {}
-    });
-  }).join("");
-}
 
 export function render() {
   const a = masteryData.advancedProblemArtifact;
