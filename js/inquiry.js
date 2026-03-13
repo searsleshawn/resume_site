@@ -1,4 +1,5 @@
 // js/inquiry.js
+import { initViewer, renderDeliverables } from "./viewer.js";
 
 function escapeHtml(s) {
   return String(s)
@@ -9,58 +10,111 @@ function escapeHtml(s) {
     .replaceAll("'", "&#039;");
 }
 
+// --- Inquiry artifact paths ---
+const XAI_BASE = "content/artifacts/xai";
+
 const inquiryData = {
   intro: [
-    "This section demonstrates my ability to conduct independent inquiry in computer science, including defining a problem, selecting an appropriate methodology, performing the investigation, and documenting outcomes and conclusions."
+    "This section demonstrates my ability to conduct independent inquiry in computer science through a Responsible AI and Explainable AI (XAI) investigation. The work documents how I defined a technical and ethical problem, selected analytical and modeling methods, evaluated results, and drew conclusions about fairness, bias, and model behavior."
   ],
 
-  // 1 artifact required (must include problem statement, design/research methodology, reports, software artifacts)
   artifact: {
-    title: "Artifact: Independent Inquiry (TBD)",
-    context: "TBD (Course / Independent Study / Research Project / Semester)",
+    title: "Independent Inquiry into Bias, Fairness, and Explainability in Machine Learning Systems",
+    context: "Responsible AI / Explainable AI coursework sequence, M.S. in Computer Science, Vanderbilt University",
+    role: "Independent investigator and developer responsible for data preparation, modeling, fairness analysis, and interpretability evaluation.",
 
-    problemStatement: "TBD: 3–6 sentences describing the research question or technical problem and why it matters.",
+    problemStatement: [
+      `This inquiry examined whether demographic, workplace, and geographic patterns in the Mental Health in Tech survey dataset could introduce bias into predictive machine learning systems. The central question was not only whether a model could predict treatment-seeking behavior, but whether it would do so in ways that reflect or amplify disparities related to gender, age, employment context, or country.`,
+
+      `This problem matters because models trained on socially skewed data can appear technically effective while still producing ethically harmful outcomes. My goal was to independently analyze the dataset, build and evaluate predictive models, and apply explainability techniques to understand how bias emerges and how it should be interpreted within a responsible AI framework.`
+    ],
 
     methodology: [
-      "TBD: Research/design methodology step 1 (e.g., data collection, modeling, evaluation plan).",
-      "TBD: Methodology step 2 (e.g., experiment setup, tools used, baselines).",
-      "TBD: Methodology step 3 (e.g., analysis approach, validation, limitations)."
+      "<strong>Data Preparation:</strong> Cleaned the dataset by removing unusable fields, handling missing values, normalizing gender data, and grouping age and country features.",
+      
+      "<strong>Exploratory Analysis:</strong> Performed EDA to identify imbalance, representation issues, and sensitive predictors.",
+
+      "<strong>Fairness Measurement:</strong> Applied statistical parity difference and disparate impact metrics to evaluate protected groups.",
+
+      "<strong>Model Development:</strong> Built a Random Forest pipeline including preprocessing, train/test evaluation, confusion matrix analysis, and feature importance.",
+
+      "<strong>Subgroup Evaluation:</strong> Compared model accuracy across gender and age groups.",
+
+      "<strong>Explainability Analysis:</strong> Used PDPs, IV/WOE, quantile error analysis, and GAM interpretation.",
+
+      "<strong>Ethical Interpretation:</strong> Connected technical findings to fairness, accountability, transparency, and responsible deployment."
     ],
 
     workPerformed: [
-      "TBD: Work performed item 1 (what you actually did during the inquiry).",
-      "TBD: Work performed item 2.",
-      "TBD: Work performed item 3."
+      "Investigated the 2014 Mental Health in Tech dataset to identify variables that could encode demographic or cultural bias.",
+      "Created cleaned analysis datasets and transformed features for bias analysis and model training.",
+      "Measured disparities across sensitive attributes including gender, age, self-employment, remote work status, company type, benefits access, and country grouping.",
+      "Built and evaluated predictive models to assess both overall performance and subgroup performance differences.",
+      "Generated explainability artifacts to determine how feature combinations influenced predictions.",
+      "Documented findings across multiple reports and connected results to Responsible AI principles through an ethical framework."
     ],
 
     outcomes: [
-      "TBD: Outcome/result 1 (key finding).",
-      "TBD: Outcome/result 2.",
-      "TBD: Outcome/result 3."
+      "Demographic and contextual variables influenced both treatment patterns and model behavior, showing the dataset was not neutral from a fairness perspective.",
+      "Bias analysis revealed disparities across gender, age, workplace, and country variables.",
+      "Model performance varied across demographic groups, particularly across gender and age subgroups.",
+      "Feature importance and explainability analysis showed demographic and contextual variables strongly influenced predictions, suggesting the model learned socially skewed patterns rather than purely need-based signals.",
+      "The inquiry showed explainability alone is insufficient; technical findings must be paired with ethical evaluation to determine whether a model should be trusted."
     ],
 
     conclusions: [
-      "TBD: Conclusion 1 (what the results imply).",
-      "TBD: Conclusion 2 (limitations and next steps)."
+      "Machine learning systems trained on socially imbalanced data can reproduce and amplify disparities even when overall accuracy appears strong. Bias detection and explainability should therefore be treated as core evaluation components rather than optional additions.",
+      "Responsible AI requires more than accuracy. Fairness analysis, subgroup evaluation, interpretability, and governance are necessary to determine whether predictive systems are suitable for real-world deployment. Future work would explore mitigation techniques, broader fairness metrics, and alternative modeling approaches designed for equitable outcomes."
     ],
 
-    requiredComponentsChecklist: [
-      "Problem statement included.",
-      "Design and research methodology included.",
-      "Project report(s) included.",
-      "Software artifacts included (code excerpts, design docs, diagrams, test results)."
+    deliverables: [
+      {
+        id: "xai-bias-reporting",
+        title: "Bias Analysis Reports",
+        type: "viewer",
+        open: true,
+        controls: {
+          openInNewTab: true,
+          download: true
+        },
+        files: [
+          { label: "Identifying Biases", url: `${XAI_BASE}/report-assignment2.pdf` },
+          { label: "Proving Biases through Machine Learning", url: `${XAI_BASE}/report-assignment 3.pdf` }
+        ]
+      },
+      {
+        id: "xai-bias-discovery",
+        title: "Statistical Analysis of Bias",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: true,
+          download: true
+        },
+        files: [
+          { label: "Interpreting Bias with Statistical Analysis", url: `${XAI_BASE}/Discovering_Bias_in_Data.pdf` },
+          { label: "RAIdata.csv", url: `${XAI_BASE}/RAIdata.csv` },
+          { label: "survey.csv", url: `${XAI_BASE}/survey.csv` }
+        ]
+      },
+      {
+        id: "xai-final-explainability",
+        title: "XAI Prototype and Ethical Framework",
+        type: "viewer",
+        open: false,
+        controls: {
+          openInNewTab: true,
+          download: true,
+          copy: true
+        },
+        files: [
+          { label: "XAI_Prototype_Final.pdf", url: `${XAI_BASE}/XAI_Prototype_Final.pdf` },
+          { label: "ethical_framework.md", url: `${XAI_BASE}/ethical_framework.md` }
+        ]
+      }
     ],
 
-    evidence: [
-      "TBD: Include excerpted report pages in the PDF.",
-      "TBD: Include code excerpts or figures in the PDF.",
-      "TBD: Include a short narrative explaining what each excerpt demonstrates."
-    ],
-
-    links: [
-      // Optional public links later (must be public if used)
-      // { label: "Public Repository", url: "https://..." }
-    ]
+    links: []
   }
 };
 
@@ -77,12 +131,13 @@ export function render() {
 
       <h3>${escapeHtml(a.title)}</h3>
       <p><strong>Context:</strong> ${escapeHtml(a.context)}</p>
+      <p><strong>Role:</strong> ${escapeHtml(a.role)}</p>
 
       <h4>Problem Statement</h4>
-      <p>${escapeHtml(a.problemStatement)}</p>
+      ${a.problemStatement.map(p => `<p>${escapeHtml(p)}</p>`).join("")}
 
       <h4>Methodology</h4>
-      <ol>${a.methodology.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ol>
+      <ol>${a.methodology.map(x => `<li class="method-step">${x}</li>`).join("")}</ol>
 
       <h4>Work Performed</h4>
       <ul>${a.workPerformed.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
@@ -93,11 +148,9 @@ export function render() {
       <h4>Conclusions</h4>
       <ul>${a.conclusions.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
 
-      <h4>Required Components Checklist</h4>
-      <ul>${a.requiredComponentsChecklist.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
 
-      <h4>Evidence to Include in PDF</h4>
-      <ul>${a.evidence.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
+      <h4>Deliverables</h4>
+      ${renderDeliverables(a.deliverables, false)}
 
       ${a.links.length ? `
         <h4>Supplemental Public Links</h4>
@@ -107,4 +160,9 @@ export function render() {
       ` : ""}
     </section>
   `;
+}
+
+export function init() {
+  const app = document.getElementById("app");
+  initViewer(app);
 }

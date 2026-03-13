@@ -1,5 +1,5 @@
 // js/mastery.js
-import { renderViewer, initViewer, renderDeliverables } from "./viewer.js";
+import { initViewer, renderDeliverables } from "./viewer.js";
 
 function escapeHtml(s) {
   return String(s)
@@ -200,6 +200,9 @@ const masteryData = {
         title: "Integration and Deployment",
         type: "viewer",
         open: false,
+        controls: {
+          openInNewTab: true
+        },
         files: [
           { label: "Integration and Deployment Plan.pdf", url: `${FSM_BASE}/Integration and Deployment Plan.pdf` }
         ]

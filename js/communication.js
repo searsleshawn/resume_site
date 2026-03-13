@@ -1,5 +1,5 @@
 // js/communication.js
-import { renderViewer, initViewer, renderDeliverables } from "./viewer.js";
+import { initViewer, renderDeliverables } from "./viewer.js";
 
 function escapeHtml(s) {
   return String(s)
@@ -137,7 +137,3 @@ export function render() {
     </section>
   `;
 }
-
-
-      // <h4>Evidence to Include in PDF</h4>
-      // <ul>${a.evidence.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>

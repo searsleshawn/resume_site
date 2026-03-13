@@ -1,0 +1,179 @@
+/* =========================================
+   Portfolio Typography Refinements
+   ========================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+main {
+  max-width: 950px;
+  margin: auto;
+}
+
+body {
+  line-height: 1.65;
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  border: 2px solid #3a4a5c;
+
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+
+  margin-bottom: 12px;
+}
+
+/* Improve section flow */
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 8px;
+}
+
+h4 {
+  margin-top: 22px;
+  margin-bottom: 6px;
+}
+
+/* Prevent headings sticking to lists */
+
+h4 + ul,
+h4 + ol {
+  margin-top: 10px;
+}
+
+/* Improve paragraph rhythm */
+
+p {
+  margin-bottom: 14px;
+}
+
+/* =========================================
+   List readability improvements
+   ========================================= */
+
+ul, ol {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 26px;
+}
+
+li {
+  margin-bottom: 9px;
+  line-height: 1.6;
+}
+
+/* Methodology steps slightly spaced */
+
+.method-step {
+  margin-bottom: 12px;
+}
+
+/* Nested list spacing */
+
+li ul,
+li ol {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* Make numbered process lists clearer */
+
+ol li::marker {
+  font-weight: 600;
+  color: #8fb3ff;
+}
+
+/* =========================================
+   Section layout improvements
+   ========================================= */
+
+.page {
+  max-width: 900px;
+}
+
+/* Improve horizontal rule spacing */
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* =========================================
+   Viewer spacing consistency
+   ========================================= */
+
+.viewer {
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+/* =========================================
+   Print optimization
+   ========================================= */
+
+@media print {
+
+  a,
+  a:visited {
+    color: black;
+    text-decoration: underline;
+  }
+
+  a::after {
+    content: "";
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  nav {
+    display: none;
+  }
+
+  button {
+    display: none;
+  }
+
+  .viewer-controls {
+    display: none;
+  }
+
+  ul, ol {
+    margin-bottom: 14px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  li {
+    margin-bottom: 6px;
+  }
+
+  h2, h3, h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .page {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  iframe {
+    max-height: 700px;
+  }
+}
