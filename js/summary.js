@@ -142,18 +142,18 @@ export function render() {
     <section class="page">
       <h2 class="section-title">1. Summary Data</h2>
 
-      <h3>Personal Information ✅</h3>
+      <h3>Personal Information</h3>
       ${infoTable}
 
-      <h3>Courses and Grades ✅</h3>
+      <h3>Courses and Grades</h3>
       ${coursesTable}
 
-      <h3>Professional Goals ✅</h3>
+      <h3>Professional Goals</h3>
       ${s.goals.map(g => `
         <p>${escapeHtml(g).replaceAll("\n", "<br>")}</p>
       `).join("")}
 
-      <h3>Academic Achievements ✅</h3>
+      <h3>Academic Achievements</h3>
       ${s.achievements.map(a => `
         <div class="achievement-block">
           <strong>${escapeHtml(a.domain)}</strong>
@@ -163,7 +163,7 @@ export function render() {
         </div>
       `).join("")}
 
-      <h3>Computer Science Topic Interests 🚧</h3>
+      <h3>Computer Science Topic Interests</h3>
       <ul>${s.interests.map(i => `<li>${escapeHtml(i)}</li>`).join("")}</ul>
     </section>
   `;

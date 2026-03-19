@@ -23,7 +23,7 @@ const masteryData = {
   ],
 
   advancedProblemArtifact: {
-    title: "Bounded Model Checker ✅",
+    title: "Bounded Model Checker",
     course: "CS 6315-50 — Automated Verification (Fall 2025)",
     problemStatement: `
       Modern software systems are often modeled as finite-state transition systems where
@@ -102,7 +102,7 @@ const masteryData = {
   },
 
   softwareArtifact: {
-    title: "Field Service Management System Design ✅",
+    title: "Field Service Management System Design",
     artifactType: "Systems Engineering Design Documentation",
 
     summary: "This artifact presents the full systems engineering design for a Field Service Management (FSM) software platform intended to support organizations managing distributed field technicians. The project demonstrates the complete lifecycle of a software system including requirements engineering, architecture design, security planning, testing strategy, and deployment planning. The system focuses on improving operational efficiency through automated scheduling, real-time technician tracking, equipment management, and integration with enterprise systems such as CRM and ERP platforms. The documentation illustrates how complex software systems are designed using structured engineering practices, traceability, and security-focused architecture.",

@@ -37,16 +37,35 @@ const ROUTES = {
   "mastery": "mastery",
   "communication": "communication",
   "inquiry": "inquiry",
-  "contact": "contact",
+  "print": "print"
 };
 
-function wrapPrint(html, label) {
-  return `
-    <section class="page print-page">
-      ${html}
-      <p class="print-hint">Print ${escapeHtml(label)}: File → Print (Ctrl/Cmd+P)</p>
-    </section>
-  `;
+// function wrapPrint(html) {
+//   return `
+//     <section class="page print-page">
+//       ${html}
+//       <p class="print-hint">Print this portfolio: File → Print (Ctrl/Cmd+P)</p>
+//     </section>
+//   `;
+// }
+
+function printButton() {
+  const btn = document.getElementById("print-portfolio-btn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const previousHash = window.location.hash;
+
+    window.location.hash = "#/print";
+
+    setTimeout(() => {
+      window.print();
+
+      if (previousHash && previousHash !== "#/print") {
+        window.location.hash = previousHash;
+      }
+    }, 500);
+  });
 }
 
 async function router() {
@@ -60,7 +79,7 @@ async function router() {
   const parts = raw.split("/").filter(Boolean);
 
   const isPrint = parts[0] === "print";
-  const routeKey = isPrint ? (parts[1] || "summary") : (parts[0] || "summary");
+  const routeKey = isPrint ? "print" : (parts[0] || "summary");
 
   const normalized = ROUTES[routeKey];
   if (!normalized) {
@@ -76,9 +95,9 @@ async function router() {
     }
 
     const html = mod.render();
-    app.innerHTML = isPrint ? wrapPrint(html, normalized) : html;
+    app.innerHTML = html;
     /* VIEWER: run page initializer if it exists */
-    if (!isPrint && typeof mod.init === "function") {
+    if (typeof mod.init === "function") {
       mod.init();
     }
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -88,4 +107,7 @@ async function router() {
 }
 
 window.addEventListener("hashchange", router);
-window.addEventListener("load", router);
+window.addEventListener("load", () => {
+  printButton();
+  router();
+});

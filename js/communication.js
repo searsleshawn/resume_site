@@ -43,15 +43,6 @@ const communicationData = {
       "Ability to explain technical tradeoffs such as tunneling, restricted ingress, and service isolation.",
       "Effective oral communication demonstrated through final presentation and project interview."
     ],
-
-    // evidence: [
-    //   "CA4 README documenting the final multi-hybrid edge-to-cloud architecture, bastion-based SSH tunneling model, deployment strategy, observability, and resilience workflow.",
-    //   "CA3 README showing production-style observability, scaling, security hardening, and resilience documentation.",
-    //   "CA2 README demonstrating declarative orchestration, automation flow, validation evidence, and structured technical reporting.",
-    //   "CA1 and CA0 documentation showing early-stage infrastructure explanation and the progression toward a more mature architecture.",
-    //   "Architecture diagrams illustrating both the final CA4 topology and the CA0–CA4 architectural evolution."
-    // ],
-
     deliverables: [
       {
         id: "cloudarch-final-docs",
@@ -102,7 +93,7 @@ export function render() {
 
   return `
     <section class="page">
-      <h2 class="section-title">4. Communication Skills in Computer Science ✅</h2>
+      <h2 class="section-title">4. Communication Skills in Computer Science</h2>
 
       ${communicationData.intro.map(p => `<p>${escapeHtml(p)}</p>`).join("")}
 
