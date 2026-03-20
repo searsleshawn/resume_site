@@ -27,7 +27,8 @@ function getFileType(file) {
   if (ext === "pdf") return "pdf";
   if (["png", "jpg", "jpeg", "gif", "webp", "svg"].includes(ext)) return "image";
   if (ext === "md") return "markdown";
-  if (["py", "js", "ts", "java", "c", "cpp", "cs", "rb", "go", "rs", "php", "html", "css", "sql", "xml", "yml", "yaml", "sh"].includes(ext)) return "code";
+  if (ext === "html" || ext === "htm") return "html";
+  if (["py", "js", "ts", "java", "c", "cpp", "cs", "rb", "go", "rs", "php", "css", "sql", "xml", "yml", "yaml", "sh"].includes(ext)) return "code";
   if (["txt", "json", "csv", "log"].includes(ext)) return "text";
   if (["xlsx", "xls"].includes(ext)) return "spreadsheet";
 
@@ -73,7 +74,8 @@ export function renderViewer(cfg) {
     title,
     files,
     open = false,
-    controls = {}
+    controls = {},
+    print = null
   } = cfg;
 
   const {
@@ -104,12 +106,12 @@ export function renderViewer(cfg) {
 
       <p id="${escapeHtml(id)}-meta" style="margin-top:.5rem;"></p>
 
-      ${buttons ? `<div>${buttons}</div>` : ""}
+      ${buttons ? `<div class="viewer-tabs">${buttons}</div>` : ""}
 
       ${
         (openInNewTab || download || copy)
           ? `
-            <p style="margin:.5rem 0;">
+            <p class="viewer-controls" style="margin:.5rem 0;">
               ${openInNewTab ? `
                 <a id="${escapeHtml(id)}-link" href="#" target="_blank" rel="noreferrer">
                   Open in a new tab
@@ -140,7 +142,7 @@ export function renderViewer(cfg) {
       <div class="viewer-frame" id="${escapeHtml(id)}-frame"></div>
 
       <script type="application/json" id="${escapeHtml(id)}-data">
-${JSON.stringify(files).replace(/</g, "\\u003c")}
+${JSON.stringify({ files, print }).replace(/</g, "\\u003c")}
       </script>
     </details>
   `;
@@ -158,93 +160,17 @@ export function renderDeliverables(items, defaultOpen = false) {
       title: item.title,
       files: item.files,
       open: item.open ?? defaultOpen,
-      controls: item.controls || {}
+      controls: item.controls || {},
+      print: item.print || null
     });
   }).join("");
 }
 
 /**
- * Inject viewer styles once.
+ * Inject viewer styles - MOVE into base.css remove this later
  */
 function ensureViewerStyles() {
-  if (document.getElementById("viewer-styles")) return;
-
-  const style = document.createElement("style");
-  style.id = "viewer-styles";
-  style.textContent = `
-    .viewer-box,
-    .pdf-viewer,
-    .image-viewer,
-    .file-fallback {
-      width: 100%;
-      max-width: 100%;
-      overflow: auto;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 10px;
-      background: rgba(0,0,0,.18);
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .viewer-box {
-      width: 70vw;
-      max-width: 100%;
-      height: 600px;
-      overflow: auto;
-    }
-
-    .viewer-pre {
-      margin: 0;
-      padding: .75rem;
-      white-space: pre;
-      tab-size: 2;
-      min-width: max-content;
-    }
-
-    .viewer-pre code {
-      display: block;
-    }
-
-    .pdf-viewer iframe {
-      display: block;
-      width: 100%;
-      height: clamp(500px, 75vh, 950px);
-      border: 0;
-    }
-
-    .image-viewer {
-      padding: .75rem;
-      text-align: center;
-    }
-
-    .image-viewer img,
-    .markdown-viewer img {
-      max-width: 100%;
-      height: auto;
-      display: inline-block;
-      border-radius: 8px;
-    }
-
-    .file-fallback {
-      padding: 1rem;
-    }
-
-    .markdown-viewer {
-      padding: 1rem;
-      line-height: 1.6;
-    }
-
-    .markdown-viewer pre {
-      overflow: auto;
-      padding: .75rem;
-      border-radius: 8px;
-      background: rgba(0,0,0,.28);
-    }
-
-    .markdown-viewer code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    }
-  `;
-  document.head.appendChild(style);
+  return;
 }
 
 /**
@@ -300,11 +226,73 @@ async function loadText(url) {
 }
 
 /**
+ * Build the small printable artifact summary used when a file should not
+ * render inline during print.
+ *
+ * This summary is intentionally driven by the viewer-level `print` config
+ * rather than per-file metadata, since the artifact itself owns the summary.
+ */
+function renderPrintSummary({ file, filename, artifactHref, printCfg }) {
+  const title = printCfg?.title || file.label || filename;
+  const description =
+    printCfg?.description ||
+    "This artifact is available in the digital portfolio.";
+  const highlights = Array.isArray(printCfg?.highlights)
+    ? printCfg.highlights
+    : [];
+
+  return `
+    <div class="print-artifact-summary">
+      <p><strong>Artifact:</strong> ${escapeHtml(title)}</p>
+      <p>${escapeHtml(description)}</p>
+      ${
+        highlights.length
+          ? `
+            <ul>
+              ${highlights.map(item => `<li>${escapeHtml(item)}</li>`).join("")}
+            </ul>
+          `
+          : ""
+      }
+      <p class="print-artifact-note">
+        Full artifact available digitally online at leshawn.searsconulting.org.
+      </p>
+    </div>
+  `;
+}
+
+/**
+ * Decide how a file should behave in print.
+ *
+ * Supported modes:
+ * - "render"  => render inline in print
+ * - "summary" => show summary block in print
+ * - "hide"    => omit from print entirely
+ *
+ * If no explicit file.print.mode is provided, fall back to defaults by type.
+ */
+function getPrintMode(file, type) {
+  const mode = file?.print?.mode;
+
+  if (mode === "render" || mode === "summary" || mode === "hide") {
+    return mode;
+  }
+
+  // Default behavior when no explicit print mode is provided.
+  if (["pdf", "html", "spreadsheet", "unknown"].includes(type)) {
+    return "summary";
+  }
+
+  return "render";
+}
+
+/**
  * Initialize every viewer inside the given root element.
  * Call this after the page HTML has been rendered into the DOM.
  */
 export function initViewer(root = document) {
   ensureViewerStyles();
+  const printMode = window.location.hash.startsWith("#/print");
 
   function setActive(buttons, activeButton) {
     buttons.forEach(btn => {
@@ -327,11 +315,24 @@ export function initViewer(root = document) {
     if (!frame || !dataEl) return;
 
     let files = [];
+    let viewerPrint = null;
+
     try {
-      files = JSON.parse(dataEl.textContent);
+      const parsed = JSON.parse(dataEl.textContent);
+      files = Array.isArray(parsed?.files) ? parsed.files : [];
+      viewerPrint = parsed?.print || null;
     } catch {
       frame.innerHTML = `<div class="file-fallback">Could not load viewer data.</div>`;
       return;
+    }
+
+    if (!files.length) {
+      frame.innerHTML = `<div class="file-fallback">No files were provided for this artifact.</div>`;
+      return;
+    }
+
+    if (printMode) {
+      viewer.open = true;
     }
 
     let currentText = "";
@@ -345,16 +346,41 @@ export function initViewer(root = document) {
 
       const type = getFileType(file);
       const filename = (file.url || "").split("/").pop() || file.label;
+      const artifactHref = file.artifactUrl || file.url || "#";
+      const printCfg = viewerPrint;
 
       if (buttons.length) {
         setActive(buttons, buttons[index]);
       }
 
-      if (meta) meta.textContent = filename;
-      if (link) link.href = file.url || "#";
-      if (downloadLink) downloadLink.href = file.url || "#";
+      // Updated to use multiple files for single artifact.
+      if (meta) {
+        meta.textContent = (artifactHref.split("/").pop()) || file.label || "";
+      }
+      if (link) link.href = artifactHref;
+      if (downloadLink) downloadLink.href = artifactHref;
 
       currentText = "";
+
+      
+      // render, print or hide artifact
+      const filePrintMode = getPrintMode(file, type);
+      if (printMode) {
+        if (filePrintMode === "hide") {
+          frame.innerHTML = "";
+          return;
+        }
+
+        if (filePrintMode === "summary") {
+          frame.innerHTML = renderPrintSummary({
+            file,
+            filename,
+            artifactHref,
+            printCfg
+          });
+          return;
+        }
+      }
 
       // PDF preview
       if (type === "pdf") {
@@ -363,6 +389,20 @@ export function initViewer(root = document) {
             <iframe
               title="${escapeHtml(file.label || filename)}"
               src="${escapeHtml(file.url)}#zoom=page-width"
+              loading="lazy">
+            </iframe>
+          </div>
+        `;
+        return;
+      }
+
+      // HTML preview
+      if (type === "html") {
+        frame.innerHTML = `
+          <div class="html-viewer">
+            <iframe
+              title="${escapeHtml(file.label || filename)}"
+              src="${escapeHtml(file.url)}"
               loading="lazy">
             </iframe>
           </div>
@@ -398,7 +438,7 @@ export function initViewer(root = document) {
 
         const box = frame.querySelector(".viewer-box");
         const md = frame.querySelector(".markdown-viewer");
-        if (box) attachScrollCapture(box);
+        if (box && !printMode) attachScrollCapture(box);
 
         try {
           const text = await loadText(file.url);
@@ -430,7 +470,7 @@ export function initViewer(root = document) {
 
         const box = frame.querySelector(".viewer-box");
         const code = frame.querySelector("code");
-        if (box) attachScrollCapture(box);
+        if (box && !printMode) attachScrollCapture(box);
 
         try {
           const text = await loadText(file.url);

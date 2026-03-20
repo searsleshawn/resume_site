@@ -12,7 +12,6 @@ function escapeHtml(s) {
 
 // --- BMC artifact paths ---
 const BMC_BASE = "content/artifacts/bmc";
-const BMC_PDF = `${BMC_BASE}/bmc-report.pdf`;
 
 // --- FSM artifact paths ---
 const FSM_BASE = "content/artifacts/FSM";
@@ -59,8 +58,18 @@ const masteryData = {
           download: true
         },
         files: [
-          { label: "bmc-report.pdf", url: BMC_PDF }
-        ]
+          { label: "Bounded Model Checker", url: `${BMC_BASE}/bmc-report.html`, artifactUrl: `${BMC_BASE}/bmc-report.pdf`, print: {mode: "summary"}  }
+        ],
+        print: {
+          title: "Bounded Model Checker Final Report",
+          description: "This report documents the design and evaluation of a lightweight bounded model checker for finite-state transition systems. It explains the problem formulation, symbolic encoding strategy, solver integration, and interpretation of verification results.",
+          highlights: [
+            "Defined bounded reachability and safety checking for finite-state models",
+            "Documented symbolic state and transition encodings using Boolean constraints",
+            "Explained how Z3 was used to detect satisfiable error traces",
+            "Presented evaluation across multiple system behaviors and edge cases"
+          ]
+        }
       },
       {
         id: "bmc-code",
@@ -72,11 +81,20 @@ const masteryData = {
           copy: true
         },
         files: [
-          { label: "bmc.py", url: `${BMC_BASE}/bmc.py` },
-          { label: "solver.py", url: `${BMC_BASE}/solver.py` },
-          { label: "model.py", url: `${BMC_BASE}/model.py` },
-          { label: "main.py", url: `${BMC_BASE}/main.py` }
-        ]
+          { label: "bmc.py", url: `${BMC_BASE}/bmc.py`, print: {mode: "summary"} },
+          { label: "solver.py", url: `${BMC_BASE}/solver.py`, print: {mode: "hide"} },
+          { label: "model.py", url: `${BMC_BASE}/model.py`, print: {mode: "hide"} },
+          { label: "main.py", url: `${BMC_BASE}/main.py`, print: {mode: "hide"} }
+        ],
+        print: {
+          title: "Bounded Model Checker Implementation",
+          description: "This artifact contains the Python implementation of the bounded model checker, including model parsing, bounded symbolic encoding, SMT query construction, and counterexample extraction.",
+          highlights: [
+            "Separated system modeling, solver interaction, and execution control into modular components",
+            "Encoded bounded execution paths for satisfiability checking",
+            "Integrated solver results with trace reconstruction for debugging and analysis"
+          ]
+        }
       },
       {
         id: "bmc-models",
@@ -88,14 +106,23 @@ const masteryData = {
           copy: true
         },
         files: [
-          { label: "cyclicerror.json", url: `${BMC_BASE}/cyclicerror.json` },
-          { label: "deadend.json", url: `${BMC_BASE}/deadend.json` },
-          { label: "deepchain.json", url: `${BMC_BASE}/deepchain.json` },
-          { label: "nondeterministic.json", url: `${BMC_BASE}/nondeterministic.json` },
-          { label: "toggle.json", url: `${BMC_BASE}/toggle.json` },
-          { label: "trafficlight.json", url: `${BMC_BASE}/trafficlight.json` },
-          { label: "unreachable.json", url: `${BMC_BASE}/unreachable.json` }
-        ]
+          { label: "cyclicerror.json", url: `${BMC_BASE}/cyclicerror.json`, print: {mode: "summary"} },
+          { label: "deadend.json", url: `${BMC_BASE}/deadend.json`, print: {mode: "hide"} },
+          { label: "deepchain.json", url: `${BMC_BASE}/deepchain.json`, print: {mode: "hide"} },
+          { label: "nondeterministic.json", url: `${BMC_BASE}/nondeterministic.json`, print: {mode: "hide"} },
+          { label: "toggle.json", url: `${BMC_BASE}/toggle.json`, print: {mode: "hide"} },
+          { label: "trafficlight.json", url: `${BMC_BASE}/trafficlight.json`, print: {mode: "hide"} },
+          { label: "unreachable.json", url: `${BMC_BASE}/unreachable.json`, print: {mode: "hide"} }
+        ],
+        print: {
+          title: "Bounded Model Checker Test Models",
+          description: "This artifact contains multiple JSON-defined transition systems used to validate the bounded model checker against representative verification scenarios.",
+          highlights: [
+            "Included cyclic, dead-end, deep-chain, and unreachable-state models",
+            "Tested nondeterministic branching and safety-violation discovery",
+            "Used varied model structures to verify solver correctness across edge cases"
+          ]
+        }
       }
     ],
     links: []
@@ -136,9 +163,18 @@ const masteryData = {
           openInNewTab: true
         },
         files: [
-          { label: "Concept of Operations (CONOPS / OPSCON)", url: `${FSM_BASE}/Security Planning/Field Service Management Software - CONOPS_OPSCON.pdf` },
-          { label: "Systems Engineering Management Plan (SEMP)", url: `${FSM_BASE}/Security Planning/Field Service Management Software - SEMP.pdf` },
-        ]
+          { label: "Concept of Operations (CONOPS / OPSCON)", url: `${FSM_BASE}/Security Planning/Field Service Management Software - CONOPS_OPSCON.pdf`, print: {mode: "summary"} },
+          { label: "Systems Engineering Management Plan (SEMP)", url: `${FSM_BASE}/Security Planning/Field Service Management Software - SEMP.pdf`, print: {mode: "hide"} },
+        ],
+        print: {
+          title: "FSM Security Planning Documentation",
+          description: "These planning documents define the operational context, stakeholder needs, management structure, and security-oriented engineering approach for the Field Service Management system.",
+          highlights: [
+            "Established mission context, stakeholder roles, and operational objectives",
+            "Outlined engineering planning and project governance considerations",
+            "Connected system planning to secure development and operational control"
+          ]
+        }
       },
       {
         id: "fsm-engineering-requirements",
@@ -149,9 +185,18 @@ const masteryData = {
           openInNewTab: true
         },
         files: [
-          { label: "System Requirements Document (SRD)", url: `${FSM_BASE}/Engineering Requirements/System Requirements Document (SRD).pdf` },
-          { label: "FSM - Traceability Matrix", url: `${FSM_BASE}/Engineering Requirements/FSM - Traceability Matrix.xlsx` }
-        ]
+          { label: "System Requirements Document (SRD)", url: `${FSM_BASE}/Engineering Requirements/System Requirements Document (SRD).pdf`, print: {mode: "summary"} },
+          { label: "FSM - Traceability Matrix", url: `${FSM_BASE}/Engineering Requirements/FSM - Traceability Matrix.xlsx`, print: {mode: "hide"} }
+        ],
+        print: {
+          title: "FSM Requirements and Traceability",
+          description: "This artifact captures the formal system requirements and the traceability structure linking stakeholder expectations to design and validation elements.",
+          highlights: [
+            "Defined functional and non-functional requirements for the platform",
+            "Mapped requirements to engineering artifacts and validation concerns",
+            "Demonstrated structured requirements management across the system lifecycle"
+          ]
+        }
       },
       {
         id: "fsm-system-design",
@@ -162,14 +207,23 @@ const masteryData = {
           openInNewTab: true
         },
         files: [
-          { label: "System Design Document", url: `${FSM_BASE}/System Design/System Design.pdf` },
+          { label: "System Design Document", url: `${FSM_BASE}/System Design/System Design.pdf`, print: {mode: "summary"} },
           { label: "Activity Diagram", url: `${FSM_BASE}/System Design/Activity Diagram.png` },
           { label: "Class Diagram", url: `${FSM_BASE}/System Design/Class Diagram.png` },
           { label: "Component Diagram", url: `${FSM_BASE}/System Design/Component Diagram.png` },
-          { label: "SysML BDD", url: `${FSM_BASE}/System Design/SysML-BDD.png` },
-          { label: "SysML IBD", url: `${FSM_BASE}/System Design/SysML-IBD.png` },
+          { label: "SysML BDD", url: `${FSM_BASE}/System Design/SysML-BDD.png`, print: {mode: "summary"} },
+          { label: "SysML IBD", url: `${FSM_BASE}/System Design/SysML-IBD.png`, print: {mode: "summary"} },
           { label: "Use Case Diagram", url: `${FSM_BASE}/System Design/Use Case Diagram.png` }
-        ]
+        ],
+        print: {
+          title: "FSM System Design Artifacts",
+          description: "This artifact presents the architectural and behavioral design of the Field Service Management platform through structured engineering diagrams and supporting design documentation.",
+          highlights: [
+            "Modeled system behavior, structure, and component responsibilities",
+            "Used UML and SysML representations to communicate design decisions",
+            "Captured interactions between users, services, and platform subsystems"
+          ]
+        }
       },
       {
         id: "fsm-testing-strategy",
@@ -180,8 +234,17 @@ const masteryData = {
           openInNewTab: true
         },
         files: [
-          { label: "Testing Plan.pdf", url: `${FSM_BASE}/Testing Plan.pdf` }
-        ]
+          { label: "Testing Plan.pdf", url: `${FSM_BASE}/Testing Plan.pdf`, print: {mode: "summary"} }
+        ],
+        print: {
+          title: "Field Service Management Testing Strategy",
+          description: "This artifact documents the verification and validation strategy for the Field Service Management platform, covering testing across unit, integration, system, and user acceptance levels.",
+          highlights: [
+            "Defined layered testing strategy across development stages",
+            "Connected validation planning to system requirements",
+            "Demonstrated verification planning for enterprise software delivery"
+          ]
+        }
       },
       {
         id: "fsm-cryptography",
@@ -192,8 +255,17 @@ const masteryData = {
           openInNewTab: true
         },
         files: [
-          { label: "Cryptographic Architecture", url: `${FSM_BASE}/Cryptography.pdf` }
-        ]
+          { label: "Cryptographic Architecture", url: `${FSM_BASE}/Cryptography.pdf`, print: {mode: "summary"} }
+        ],
+        print: {
+          title: "Field Service Management Cryptographic Architecture",
+          description: "This artifact outlines the cryptographic design of the Field Service Management platform, including secure communication, protection of system data, and security-focused architectural decisions.",
+          highlights: [
+            "Planned encryption for sensitive data and communications",
+            "Addressed secure API interaction and authentication support",
+            "Integrated security architecture into the broader system design"
+          ]
+        }
       },
       {
         id: "fsm-integration-deployment",
@@ -204,8 +276,17 @@ const masteryData = {
           openInNewTab: true
         },
         files: [
-          { label: "Integration and Deployment Plan.pdf", url: `${FSM_BASE}/Integration and Deployment Plan.pdf` }
-        ]
+          { label: "Integration and Deployment Plan.pdf", url: `${FSM_BASE}/Integration and Deployment Plan.pdf`, print: {mode: "summary"} }
+        ],
+        print: {
+          title: "Field Service Management Integration and Deployment Planning",
+          description: "This artifact documents how the Field Service Management platform would integrate with enterprise systems and how it would be deployed in an operational environment.",
+          highlights: [
+            "Planned system integration with external enterprise platforms",
+            "Documented deployment considerations for operational rollout",
+            "Addressed implementation readiness beyond core design"
+          ]
+        }
       }
     ],
     links: []

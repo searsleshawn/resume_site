@@ -69,17 +69,30 @@ const inquiryData = {
 
     deliverables: [
       {
+        id: "xai-building-ethical-ai-framework",
+        title: "Theoretical framework to building ethical AI beliefs",
+        type: "viewer",
+        open: true,
+        controls: {
+          download: true,
+          copy: true
+        },
+        files: [
+          { label: "Building Ethical AI", url: `${XAI_BASE}/ethical_framework.md`}
+        ]
+      },
+      {
         id: "xai-bias-reporting",
         title: "Bias Analysis Reports",
         type: "viewer",
-        open: true,
+        open: false,
         controls: {
           openInNewTab: true,
           download: true
         },
         files: [
-          { label: "Identifying Biases", url: `${XAI_BASE}/report-assignment2.pdf` },
-          { label: "Proving Biases through Machine Learning", url: `${XAI_BASE}/report-assignment 3.pdf` }
+          { label: "Identifying Biases", url: `${XAI_BASE}/report-assignment 2.html`, artifactUrl: `${XAI_BASE}/report-assignment 2.pdf`},
+          { label: "Proving Biases through Machine Learning", url: `${XAI_BASE}/report-assignment 3.html`, artifactUrl: `${XAI_BASE}/report-assignment 3.pdf` }
         ]
       },
       {
@@ -92,7 +105,7 @@ const inquiryData = {
           download: true
         },
         files: [
-          { label: "Interpreting Bias with Statistical Analysis", url: `${XAI_BASE}/Discovering_Bias_in_Data.pdf` },
+          { label: "Interpreting Bias with Statistical Analysis", url: `${XAI_BASE}/Discovering_Bias_in_Data.html`, artifactUrl: `${XAI_BASE}/Discovering_Bias_in_Data.pdf` },
           { label: "RAIdata.csv", url: `${XAI_BASE}/RAIdata.csv` },
           { label: "survey.csv", url: `${XAI_BASE}/survey.csv` }
         ]
@@ -104,13 +117,21 @@ const inquiryData = {
         open: false,
         controls: {
           openInNewTab: true,
-          download: true,
-          copy: true
+          download: true
         },
         files: [
-          { label: "XAI_Prototype_Final.pdf", url: `${XAI_BASE}/XAI_Prototype_Final.pdf` },
-          { label: "ethical_framework.md", url: `${XAI_BASE}/ethical_framework.md` }
-        ]
+          { label: "XAI_Prototype_Final", url: `${XAI_BASE}/XAI_Prototype_Final.html`, artifactUrl: `${XAI_BASE}/XAI_Prototype_Final.pdf` }
+        ],
+        print: {
+          mode: "summary",
+          title: "XAI Prototype and Ethical Framework",
+          description: "This artifact documents my fairness and explainability analysis using interpretable modeling, bias evaluation, and an ethical framework for responsible machine learning.",
+          highlights: [
+            "Evaluated statistical bias and model behavior",
+            "Applied explainability techniques to interpret predictions",
+            "Developed an ethical framework to contextualize findings"
+          ]
+        }
       }
     ],
 

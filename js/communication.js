@@ -62,19 +62,6 @@ const communicationData = {
           { label: "CA0", url: `${CLOUD_ARCH_BASE}/ca0/README-ca0.md` }
         ]
       },
-      // {
-      //   id: "cloudarch-diagrams",
-      //   title: "Architecture Diagrams",
-      //   type: "viewer",
-      //   open: false,
-      //   controls: {
-      //     openInNewTab: true,
-      //     download: true
-      //   },
-      //   files: [
-      //     { label: "ca4-architecture.png", url: `${CLOUD_ARCH_BASE}/ca4/ca4-diagram.png` },
-      //   ]
-      // }
     ],
     links: [
       // Optional public links later (must be public if used)
