@@ -31,17 +31,11 @@ const inquiryData = {
 
     methodology: [
       "<strong>Data Preparation:</strong> Cleaned the dataset by removing unusable fields, handling missing values, normalizing gender data, and grouping age and country features.",
-      
       "<strong>Exploratory Analysis:</strong> Performed EDA to identify imbalance, representation issues, and sensitive predictors.",
-
       "<strong>Fairness Measurement:</strong> Applied statistical parity difference and disparate impact metrics to evaluate protected groups.",
-
       "<strong>Model Development:</strong> Built a Random Forest pipeline including preprocessing, train/test evaluation, confusion matrix analysis, and feature importance.",
-
       "<strong>Subgroup Evaluation:</strong> Compared model accuracy across gender and age groups.",
-
       "<strong>Explainability Analysis:</strong> Used PDPs, IV/WOE, quantile error analysis, and GAM interpretation.",
-
       "<strong>Ethical Interpretation:</strong> Connected technical findings to fairness, accountability, transparency, and responsible deployment."
     ],
 
@@ -70,7 +64,7 @@ const inquiryData = {
     deliverables: [
       {
         id: "xai-building-ethical-ai-framework",
-        title: "Theoretical framework to building ethical AI beliefs",
+        title: "Theoretical Framework for Building Ethical AI Beliefs",
         type: "viewer",
         open: true,
         controls: {
@@ -78,8 +72,21 @@ const inquiryData = {
           copy: true
         },
         files: [
-          { label: "Building Ethical AI", url: `${XAI_BASE}/ethical_framework.md`}
-        ]
+          {
+            label: "Building Ethical AI",
+            url: `${XAI_BASE}/ethical_framework.md`,
+            print: { mode: "render" }
+          }
+        ],
+        print: {
+          title: "Theoretical Framework for Building Ethical AI Beliefs",
+          description: "This artifact presents the ethical framework developed to interpret the technical findings of the inquiry. It connects fairness, accountability, transparency, and responsible deployment principles to the practical evaluation of machine learning systems.",
+          highlights: [
+            "Established an ethical lens for interpreting model behavior",
+            "Connected fairness analysis to broader Responsible AI principles",
+            "Framed technical results within accountability and deployment concerns"
+          ]
+        }
       },
       {
         id: "xai-bias-reporting",
@@ -91,9 +98,28 @@ const inquiryData = {
           download: true
         },
         files: [
-          { label: "Identifying Biases", url: `${XAI_BASE}/report-assignment 2.html`, artifactUrl: `${XAI_BASE}/report-assignment 2.pdf`},
-          { label: "Proving Biases through Machine Learning", url: `${XAI_BASE}/report-assignment 3.html`, artifactUrl: `${XAI_BASE}/report-assignment 3.pdf` }
-        ]
+          {
+            label: "Identifying Biases",
+            url: `${XAI_BASE}/report-assignment 2.html`,
+            artifactUrl: `${XAI_BASE}/report-assignment 2.pdf`,
+            print: { mode: "summary" }
+          },
+          {
+            label: "Proving Biases through Machine Learning",
+            url: `${XAI_BASE}/report-assignment 3.html`,
+            artifactUrl: `${XAI_BASE}/report-assignment 3.pdf`,
+            print: { mode: "hide" }
+          }
+        ],
+        print: {
+          title: "Bias Analysis Reports",
+          description: "These reports document the progression of the inquiry from identifying statistical and representational bias in the dataset to demonstrating how machine learning models can reinforce those disparities through predictive behavior.",
+          highlights: [
+            "Documented bias patterns in demographic and workplace-related variables",
+            "Connected statistical bias findings to model-driven outcomes",
+            "Showed how predictive systems can reproduce socially skewed patterns"
+          ]
+        }
       },
       {
         id: "xai-bias-discovery",
@@ -105,10 +131,32 @@ const inquiryData = {
           download: true
         },
         files: [
-          { label: "Interpreting Bias with Statistical Analysis", url: `${XAI_BASE}/Discovering_Bias_in_Data.html`, artifactUrl: `${XAI_BASE}/Discovering_Bias_in_Data.pdf` },
-          { label: "RAIdata.csv", url: `${XAI_BASE}/RAIdata.csv` },
-          { label: "survey.csv", url: `${XAI_BASE}/survey.csv` }
-        ]
+          {
+            label: "Interpreting Bias with Statistical Analysis",
+            url: `${XAI_BASE}/Discovering_Bias_in_Data.html`,
+            artifactUrl: `${XAI_BASE}/Discovering_Bias_in_Data.pdf`,
+            print: { mode: "summary" }
+          },
+          {
+            label: "RAIdata.csv",
+            url: `${XAI_BASE}/RAIdata.csv`,
+            print: { mode: "hide" }
+          },
+          {
+            label: "survey.csv",
+            url: `${XAI_BASE}/survey.csv`,
+            print: { mode: "hide" }
+          }
+        ],
+        print: {
+          title: "Statistical Analysis of Bias",
+          description: "This artifact documents the statistical examination of the Mental Health in Tech dataset to identify imbalance, representation issues, and disparity patterns that could influence downstream machine learning models.",
+          highlights: [
+            "Examined demographic and workplace imbalance in the dataset",
+            "Used statistical analysis to identify disparity patterns",
+            "Established the empirical basis for later fairness and model evaluation"
+          ]
+        }
       },
       {
         id: "xai-final-explainability",
@@ -120,10 +168,14 @@ const inquiryData = {
           download: true
         },
         files: [
-          { label: "XAI_Prototype_Final", url: `${XAI_BASE}/XAI_Prototype_Final.html`, artifactUrl: `${XAI_BASE}/XAI_Prototype_Final.pdf` }
+          {
+            label: "XAI_Prototype_Final",
+            url: `${XAI_BASE}/XAI_Prototype_Final.html`,
+            artifactUrl: `${XAI_BASE}/XAI_Prototype_Final.pdf`,
+            print: { mode: "summary" }
+          }
         ],
         print: {
-          mode: "summary",
           title: "XAI Prototype and Ethical Framework",
           description: "This artifact documents my fairness and explainability analysis using interpretable modeling, bias evaluation, and an ethical framework for responsible machine learning.",
           highlights: [
@@ -168,7 +220,6 @@ export function render() {
 
       <h4>Conclusions</h4>
       <ul>${a.conclusions.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul>
-
 
       <h4>Deliverables</h4>
       ${renderDeliverables(a.deliverables, false)}

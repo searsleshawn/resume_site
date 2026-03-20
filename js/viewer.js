@@ -255,7 +255,7 @@ function renderPrintSummary({ file, filename, artifactHref, printCfg }) {
           : ""
       }
       <p class="print-artifact-note">
-        Full artifact available digitally online at leshawn.searsconulting.org.
+        Full artifact available digitally online at leshawn.searsconsulting.org.
       </p>
     </div>
   `;
@@ -364,8 +364,9 @@ export function initViewer(root = document) {
 
       
       // render, print or hide artifact
-      const filePrintMode = getPrintMode(file, type);
-      if (printMode) {
+      const filePrintMode = getPrintMode(file);
+
+      if (printMode && filePrintMode) {
         if (filePrintMode === "hide") {
           frame.innerHTML = "";
           return;
