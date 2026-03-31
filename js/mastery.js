@@ -130,7 +130,7 @@ const masteryData = {
 
   softwareArtifact: {
     title: "Field Service Management System Design",
-    artifactType: "Systems Engineering Design Documentation",
+    course: "CS 6387-50 – Topics in Software Engineering: Cybersecurity (Fall 2024)",
 
     summary: "This artifact presents the full systems engineering design for a Field Service Management (FSM) software platform intended to support organizations managing distributed field technicians. The project demonstrates the complete lifecycle of a software system including requirements engineering, architecture design, security planning, testing strategy, and deployment planning. The system focuses on improving operational efficiency through automated scheduling, real-time technician tracking, equipment management, and integration with enterprise systems such as CRM and ERP platforms. The documentation illustrates how complex software systems are designed using structured engineering practices, traceability, and security-focused architecture.",
 
@@ -307,7 +307,7 @@ export function render() {
       <hr />
 
       <h3>${escapeHtml(a.title)}</h3>
-      <p><strong>Course:</strong> ${escapeHtml(a.course)}</p>
+      <p><strong>Context:</strong> ${escapeHtml(a.course)}</p>
 
       <h4>Summary</h4>
       <p>${escapeHtml(a.problemStatement)}</p>
@@ -331,7 +331,7 @@ export function render() {
       <hr />
 
       <h3>${escapeHtml(b.title)}</h3>
-      <p><strong>Artifact Type:</strong> ${escapeHtml(b.artifactType)}</p>
+      <p><strong>Context:</strong> ${escapeHtml(b.course)}</p>
 
       <h4>Summary</h4>
       <p>${escapeHtml(b.summary)}</p>

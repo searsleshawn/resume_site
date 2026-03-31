@@ -31,9 +31,10 @@ const cvData = {
       organization: "Knoxville Utilities Board",
       dates: "October 2023 – May 2024",
       description: [
-        "Provided technical support for residential networking and device connectivity.",
-        "Diagnosed and resolved performance and infrastructure issues.",
-        "Collaborated with Network Operations Center to maintain system reliability."
+        "Provided ISP-level technical support for residential networking and connectivity issues.",
+        "Diagnosed network performance, provisioning, and infrastructure faults impacting service.",
+        "Worked within the Network Operations Center (NOC) performing incident triage, network diagnostics, and escalation supporting production ISP infrastructure.",
+        "Developed practical experience in ISP operations, incident triage, and network reliability workflows.",
       ]
     },
     {
@@ -49,14 +50,17 @@ const cvData = {
   ],
 
   skills: {
-    languages: ["Java", "Python", "C++", "JavaScript"],
-    frameworks: ["Spring Boot", "R2DBC", "React", "Node.js"],
-    systems: ["Linux", "Docker", "Nginx", "AWS"],
+    languages: ["Java", "Python", "C++", "C#", "C", "ASM", "JavaScript"],
+    frameworks: ["Spring Boot", "R2DBC", "React", "Node.js", "TensorFlow", "PyTorch", ],
+    systems: ["Linux", "Docker", "Nginx", "AWS", "Cloudflare", "Git"],
     areas: [
       "Distributed Systems",
+      "Microservices architecture",
+      "REST APIs",
       "Digital Forensics",
       "Machine Learning",
-      "Cloud Infrastructure"
+      "Cloud Infrastructure",
+      "Full-Stack Engineering"
     ]
   },
 

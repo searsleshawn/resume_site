@@ -20,8 +20,7 @@ const inquiryData = {
 
   artifact: {
     title: "Independent Inquiry into Bias, Fairness, and Explainability in Machine Learning Systems",
-    context: "Responsible AI / Explainable AI coursework sequence, M.S. in Computer Science, Vanderbilt University",
-    role: "Independent investigator and developer responsible for data preparation, modeling, fairness analysis, and interpretability evaluation.",
+    context: "CS 5891-50 – Special Topics: Responsible AI, M.S. in Computer Science, Vanderbilt University",
 
     problemStatement: [
       `This inquiry examined whether demographic, workplace, and geographic patterns in the Mental Health in Tech survey dataset could introduce bias into predictive machine learning systems. The central question was not only whether a model could predict treatment-seeking behavior, but whether it would do so in ways that reflect or amplify disparities related to gender, age, employment context, or country.`,
@@ -64,7 +63,7 @@ const inquiryData = {
     deliverables: [
       {
         id: "xai-building-ethical-ai-framework",
-        title: "Theoretical Framework for Building Ethical AI Beliefs",
+        title: "Theoretical Framework for Ethical AI System Evaluation",
         type: "viewer",
         open: true,
         controls: {
@@ -79,7 +78,7 @@ const inquiryData = {
           }
         ],
         print: {
-          title: "Theoretical Framework for Building Ethical AI Beliefs",
+          title: "Theoretical Framework for Ethical AI System Evaluation",
           description: "This artifact presents the ethical framework developed to interpret the technical findings of the inquiry. It connects fairness, accountability, transparency, and responsible deployment principles to the practical evaluation of machine learning systems.",
           highlights: [
             "Established an ethical lens for interpreting model behavior",
@@ -204,7 +203,6 @@ export function render() {
 
       <h3>${escapeHtml(a.title)}</h3>
       <p><strong>Context:</strong> ${escapeHtml(a.context)}</p>
-      <p><strong>Role:</strong> ${escapeHtml(a.role)}</p>
 
       <h4>Problem Statement</h4>
       ${a.problemStatement.map(p => `<p>${escapeHtml(p)}</p>`).join("")}
